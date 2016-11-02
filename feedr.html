@@ -25,10 +25,10 @@
             </ul>
           </li>
         </ul>
-        <section id="search">
+        <!-- <section id="search">
           <input type="text" name="name" value="">
           <a href="#"><img src="images/search.png" alt="" /></a>
-        </section>
+        </section> -->
       </nav>
       <div class="clearfix"></div>
     </section>
@@ -46,29 +46,78 @@
     </div>
   </div> -->
 
-  <section id="main" class="displayArticles">
+  <section id="main" class="displayDiggArticles">
   </section>
+  <section id="main" class="displayArticles2">
+  </section>
+  <section id="main" class="displayArticles3">
+  </section>
+
   
-  <script id="articleList" type="text/x-handlebars-template">
-  {{#each feed}}
-    <article class="article">
-      <section class="featuredImage">
-        <img src="{{content.media.images.0.original_url}}" />
-      </section>
-      <section class="articleContent">
-        <a href="{{content.url}}"><h3>{{content.title_alt}}</h3></a>
-        <h6>
-          {{#each content.tags}}
-            {{display}}{{"  "}}
-          {{/each}}
-        </h6>
-      </section>
-      <section class="impressions">{{diggs.count}}
-      </section>
-      <div class="clearfix"></div>
-    </article>
-  {{/each}}  
+  <script id="DiggArticleList" type="text/x-handlebars-template">
+    <!-- <h3>{{newsSource}}</h3> -->
+    {{#each feed}}
+      <article class="article">
+        <section class="featuredImage">
+          <img src="{{content.media.images.4.original_url}}" />
+        </section>
+        <section class="articleContent">
+          <a href="{{content.url}}"><h3>{{content.title_alt}}</h3></a>
+          <h6>
+            {{#each content.tags}}
+              {{display}}{{"  "}}
+            {{/each}}
+          </h6>
+        </section>
+        <!-- <section class="impressions">{{diggs.count}}
+        </section> -->
+        <div class="clearfix"></div>
+      </article>
+    {{/each}}  
   </script>
+ 
+  <script id="articleList2" type="text/x-handlebars-template">
+    <!-- <h2>{{newsSource}}</h2> -->
+    {{#each response.results}}
+      <article class="article">
+        <section class="featuredImage">
+          <img src="images/article_placeholder_4.jpg" />
+        </section>
+        <section class="articleContent">
+          <a href="{{webUrl}}"><h3>{{webTitle}}</h3></a>
+          <h6>
+              {{sectionName}}
+          </h6>
+        </section>
+        <!-- <section class="impressions">N/A
+        </section> -->
+        <div class="clearfix"></div>
+      </article>
+    {{/each}}  
+  </script>
+
+  <script id="articleList3" type="text/x-handlebars-template">
+    <!-- <h2>{{newsSource}}</h2> -->
+    {{#each articles}}
+      <div class="clearfix"></div>
+      <article class="article">
+        <section class="featuredImage">
+          <img src="{{urlToImage}}" />
+        </section>
+        <section class="articleContent">
+          <a href="{{url}}"><h3>{{title}}</h3></a>
+          <h6>
+              {{author}}
+          </h6>
+        </section>
+        <!-- <section class="impressions">N/A
+        </section> -->
+        <div class="clearfix"></div>
+      </article>
+    {{/each}}  
+  </script>
+
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

@@ -1,6 +1,8 @@
 // Create the Elements.
 var search = document.querySelector(".search");
-var displayArticles = document.querySelector(".displayArticles");
+var displayDiggArticles = document.querySelector(".displayDiggArticles");
+var displayArticles2 = document.querySelector(".displayArticles2");
+var displayArticles3 = document.querySelector(".displayArticles3");
 var article = document.querySelector(".article");
 var popUp = document.querySelector(".popUp");
 
@@ -8,43 +10,40 @@ var articleTemplate = document.querySelector("#article-template");
 
 // Add Event Listeners. 
 window.addEventListener('load', showArticles)
-//search.addEventListener('click', showArticles);
 
 // Add Event Handler functions.
-
 function showArticles (event) {
     event.preventDefault();
-    //var search = search.value;
-    //console.log(search);
+    // displayArticles.innerHTML = '';
+    var url1 = "https://accesscontrolalloworiginall.herokuapp.com/http://digg.com/api/news/popular.json";
+    jQuery.getJSON(url1, appendArticles1);
 
-    var url = "https://accesscontrolalloworiginall.herokuapp.com/http://digg.com/api/news/popular.json";
-    jQuery.getJSON(url,appendArticles);
-    //$.getJSON(url,updateArticles);
+    var url2 = "http://content.guardianapis.com/search?q=technology&api-key=4aec2a05-eda5-4352-a802-522cfa655803";
+    jQuery.getJSON(url2, appendArticles2);
 
+    var url3 = "https://newsapi.org/v1/articles?source=bbc-sport&sortBy=top&apiKey=158fb7af227c4843879cbe7f7f2bb5b3";
+    jQuery.getJSON(url3, appendArticles3);
 }
 
 // update the articles on the page.
-
-function appendArticles(json) {
-
-    displayArticles.innerHTML = '';
+function appendArticles1(json) {
     var articles = json.data;
-    var templateFn = Handlebars.compile(articleList.innerHTML);
-    displayArticles.innerHTML = templateFn(articles);
-    //get title of an article 
-    // console.log(articles.feed[3].content.title_alt);
-    // console.log(articles);
-    
-    //get image of an article 
-    // console.log(articles.feed[0].content.media.images[0].url);
-
-    // display array of tags 
-    // console.log(articles.feed[0].content.tags[1].display);
+    console.log("DIGG: ", json.data);
+    articles.newsSource = "DIGG";
+    var templateFn = Handlebars.compile(DiggArticleList.innerHTML);
+    displayDiggArticles.innerHTML = templateFn(articles);
 }
 
-// function updateMovieDetails(json) {
-//     var movies = json.Search;
-//     details.innerHTML = '';
-//     var templateFn = Handlebars.compile(articleList.innerHTML);
-//     details.innerHTML = templateFn(json);
-// }
+function appendArticles2(json) {
+    json.newsSource = "The Guardian";
+    console.log("Guardian: ", json);
+    var templateFn = Handlebars.compile(articleList2.innerHTML);
+    displayArticles2.innerHTML = templateFn(json);
+}
+
+function appendArticles3(json) {
+    json.newsSource = "BBC sport";
+     console.log("BBC sport: ", json);
+    var templateFn = Handlebars.compile(articleList3.innerHTML);
+    displayArticles3.innerHTML = templateFn(json);   
+}

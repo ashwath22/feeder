@@ -1,5 +1,9 @@
 /* General Styles
 ---------------------------------------------- */
+script {
+  margin-top: 100px;
+}
+
 .displayArticles {
   max-width: 1000px;
   margin: 0 auto;
@@ -143,11 +147,11 @@ header #search.active a {
 
 header nav a {
   display:block;
-	padding:0 10px;
-	color:#FFF;
-	font-size:16px;
-	line-height: 40px;
-	text-decoration:none;
+  padding:0 10px;
+  color:#FFF;
+  font-size:16px;
+  line-height: 40px;
+  text-decoration:none;
   transition: 0.2s all;
 }
 
@@ -157,37 +161,37 @@ header nav a:hover {
 }
 
 nav ul {
-	padding:0;
-	margin:0;
+  padding:0;
+  margin:0;
   margin-right: 30px;
-	list-style: none;
-	position: relative;
-	}
+  list-style: none;
+  position: relative;
+  }
 
 nav ul li {
-	display:inline-block;
-	background-color: #CC0020;
+  display:inline-block;
+  background-color: #CC0020;
   position: relative;
 }
 
 nav ul ul {
-	display: none;
-	position: absolute;
-	top: 40px;
+  display: none;
+  position: absolute;
+  top: 40px;
   right: -30px;
 }
 
 /* Display Dropdowns on Hover */
 nav ul li:hover > ul {
-	display:inherit;
+  display:inherit;
 }
 
 /* First Tier Dropdown */
 nav ul ul li {
-	width:170px;
-	float:none;
-	display:list-item;
-	position: relative;
+  width:170px;
+  float:none;
+  display:list-item;
+  position: relative;
 }
 
 /* Main Section */
@@ -245,10 +249,11 @@ nav ul ul li {
 }
 
 .article .impressions {
-  width: 15%;
+  /*width: 15%;
   float: right;
-  font-size: 30px;
+  font-size: 20px;
   margin-top: 15px;
+  margin-right: 15px;
   text-align: right;
-  color: #097FB2;
+  color: #097FB2;*/
 }
