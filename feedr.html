@@ -35,7 +35,7 @@
   </header>
   
 <!-- pop up window -->
-  <!-- <div id="popUp" class="loader hidden">
+  <div id="popUp" class="loader hidden">
     <a href="#" class="closePopUp">X</a>
     <div class="container">
       <h1>Article title here</h1>
@@ -44,20 +44,20 @@
       </p>
       <a href="#" class="popUpAction" target="_blank">Read more from source</a>
     </div>
-  </div> -->
+  </div>
 
   <section id="main" class="displayDiggArticles">
   </section>
-  <section id="main" class="displayArticles2">
+  <section id="main" class="displayGuardianArticles">
   </section>
-  <section id="main" class="displayArticles3">
+  <section id="main" class="displayBbcArticles">
   </section>
 
   
   <script id="DiggArticleList" type="text/x-handlebars-template">
     <!-- <h3>{{newsSource}}</h3> -->
     {{#each feed}}
-      <article class="article">
+      <article class="article" id="{{content.content_id}}">
         <section class="featuredImage">
           <img src="{{content.media.images.4.original_url}}" />
         </section>
@@ -76,12 +76,12 @@
     {{/each}}  
   </script>
  
-  <script id="articleList2" type="text/x-handlebars-template">
+  <script id="GuardianArticleList" type="text/x-handlebars-template">
     <!-- <h2>{{newsSource}}</h2> -->
     {{#each response.results}}
-      <article class="article">
+      <article class="article" id="{{id}}">
         <section class="featuredImage">
-          <img src="images/article_placeholder_4.jpg" />
+          <img src="images/article_placeholder_5.png" />
         </section>
         <section class="articleContent">
           <a href="{{webUrl}}"><h3>{{webTitle}}</h3></a>
@@ -96,11 +96,10 @@
     {{/each}}  
   </script>
 
-  <script id="articleList3" type="text/x-handlebars-template">
+  <script id="BbcArticleList" type="text/x-handlebars-template">
     <!-- <h2>{{newsSource}}</h2> -->
     {{#each articles}}
-      <div class="clearfix"></div>
-      <article class="article">
+      <article class="article" id="{{publishedAt}}">
         <section class="featuredImage">
           <img src="{{urlToImage}}" />
         </section>
