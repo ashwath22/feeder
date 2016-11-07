@@ -14,14 +14,15 @@
 <body>
   <header>
     <section class="container">
-      <a href="#"><h1>Feedr</h1></a>
+      <a href="#" id ="homePage"><h1>Feedr</h1></a>
       <nav>
         <ul>
-          <li><a href="#">News Source: <span>Source Name</span></a>
+          <li><a href="#">Choose news source<span></span></a>
             <ul>
-                <li><a href="#">Source 1</a></li>
-                <li><a href="#">Source 2</a></li>
-                <li><a href="#">Source 3</a></li>
+                <li><a href="#" id="showAll">Show all</a></li>
+                <li><a href="#" id ="diggLink">Digg</a></li>
+                <li><a href="#" id ="guardianLink">The Guardian</a></li>
+                <li><a href="#" id ="bbcLink">BBC sport</a></li>
             </ul>
           </li>
         </ul>
@@ -36,24 +37,24 @@
   
 <!-- pop up window -->
   <div id="popUp" class="loader hidden">
-    <a href="#" class="closePopUp">X</a>
-    <div class="container">
-      <h1>Article title here</h1>
-      <p>
-        Article description/content here.
-      </p>
-      <a href="#" class="popUpAction" target="_blank">Read more from source</a>
-    </div>
+    <a href="#" class="closePopUp">X</a>  
+    <div class="popUpContainer">
+      
+    </div>    
   </div>
 
-  <section id="main" class="displayDiggArticles">
-  </section>
-  <section id="main" class="displayGuardianArticles">
-  </section>
-  <section id="main" class="displayBbcArticles">
-  </section>
-
+  <div id="main">
+    <section  class="displayDiggArticles">
+    </section>
+    <section class="displayGuardianArticles">
+    </section>
+    <section class="displayBbcArticles">
+    </section>
+    <!-- <section class="displayNytArticles">
+    </section> -->
+  </div>
   
+
   <script id="DiggArticleList" type="text/x-handlebars-template">
     <!-- <h3>{{newsSource}}</h3> -->
     {{#each feed}}
@@ -69,33 +70,52 @@
             {{/each}}
           </h6>
         </section>
-        <!-- <section class="impressions">{{diggs.count}}
-        </section> -->
-        <div class="clearfix"></div>
-      </article>
-    {{/each}}  
-  </script>
- 
-  <script id="GuardianArticleList" type="text/x-handlebars-template">
-    <!-- <h2>{{newsSource}}</h2> -->
-    {{#each response.results}}
-      <article class="article" id="{{id}}">
-        <section class="featuredImage">
-          <img src="images/article_placeholder_5.png" />
-        </section>
-        <section class="articleContent">
-          <a href="{{webUrl}}"><h3>{{webTitle}}</h3></a>
-          <h6>
-              {{sectionName}}
-          </h6>
-        </section>
-        <!-- <section class="impressions">N/A
-        </section> -->
         <div class="clearfix"></div>
       </article>
     {{/each}}  
   </script>
 
+ <!-- Digg popup template -->
+  <script id="diggPopUpTemplate" type="text/x-handlebars-template">
+    <h1>{{content.title_alt}}</h1>
+    <p>
+      {{content.description}}
+    </p>
+    <a href="{{content.url}}" class="popUpAction" target="_blank">Read more from source</a>
+  </script>
+
+   
+  <script id="GuardianArticleList" type="text/x-handlebars-template">
+    <a name = "#theGuardian">
+      <!-- <h2>{{newsSource}}</h2> -->
+      {{#each response.results}}
+        <article class="article" id="{{id}}">
+          <section class="featuredImage">
+            <img src="images/article_placeholder_5.png" />
+          </section>
+          <section class="articleContent">
+            <a href="{{webUrl}}"><h3>{{webTitle}}</h3></a>
+            <h6>
+                {{sectionName}}
+            </h6>
+          </section>
+          <div class="clearfix"></div>
+        </article>
+      {{/each}}  
+    </a>  
+  </script>
+
+  <!-- Guardian popup template -->
+  <script id="guardianPopUpTemplate" type="text/x-handlebars-template">
+    <h1>{{webTitle}}</h1>
+    <p>
+      <!-- No description available -->
+    </p>
+    <a href="{{webUrl}}" class="popUpAction" target="_blank">Read more from source</a>
+  </script>
+
+
+  
   <script id="BbcArticleList" type="text/x-handlebars-template">
     <!-- <h2>{{newsSource}}</h2> -->
     {{#each articles}}
@@ -109,13 +129,40 @@
               {{author}}
           </h6>
         </section>
-        <!-- <section class="impressions">N/A
-        </section> -->
         <div class="clearfix"></div>
       </article>
     {{/each}}  
   </script>
 
+<!-- BBC popup template -->
+  <script id="bbcPopUpTemplate" type="text/x-handlebars-template">
+    <h1>{{title}}</h1>
+    <p>
+      {{description}}
+    </p>
+    <a href="{{url}}" class="popUpAction" target="_blank">Read more from source</a>
+  </script>
+
+
+  <!-- <script id="NytArticleList" type="text/x-handlebars-template">
+      {{#each results}}
+        <article class="article" id="{{title}}">
+        <section class="featuredImage">
+          <img src="{{multimedia.1.url}}"/>
+        </section>
+        <section class="articleContent">
+          <a href="{{results.url}}"><h3>{{title}}</h3><a>
+          <h6>
+            {{#each results.des_facet}}
+              {{this}}
+            {{/each}}
+          </h6>
+        </section>
+        <div class="clearfix"></div>
+      </article>
+    {{/each}}
+  </script>
+ -->
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>

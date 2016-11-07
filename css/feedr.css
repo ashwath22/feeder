@@ -9,6 +9,12 @@ script {
   margin: 0 auto;
 }
 
+.popUpContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top:100px;
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;
@@ -16,8 +22,8 @@ script {
 
 #popUp {
   z-index: 10;
-  opacity: 0.95;
-  position: absolute;
+  /*opacity: 0.95;*/
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -26,6 +32,7 @@ script {
 }
 
 #popUp .closePopUp {
+  z-index: 10;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -197,7 +204,10 @@ nav ul ul li {
 
 /* Main Section */
 #main {
-  margin-top: 65px;
+  /*margin-top: 200px;*/
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top:65px;
 }
 
 /* Individual Article Styling */
